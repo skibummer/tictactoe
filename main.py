@@ -1,18 +1,20 @@
-row1 = ["⬜️","⬜️","⬜️"]
-row2 = ["⬜️","⬜️","⬜️"]
-row3 = ["⬜️","⬜️","⬜️"]
-map = [row1, row2, row3]
-print(f"{row1}\n{row2}\n{row3}")
+row0 = ["⬜️", "⬜️", "⬜️"]
+row1 = ["⬜️", "⬜️", "⬜️"]
+row2 = ["⬜️", "⬜️", "⬜️"]
+map = [row0, row1, row2]
+print("     Column0  Column1  Column2")
+print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
-while True:
+print (f"{row0[0]}")
+# while True:
 
+p1_x_cord = input("Player 1: Type the X coordinate of your move. \n ")
+p1_y_cord = input("Player 2: Type the Y coordinate of your move.\n ")
 
-  p1_x_cord = input("What is the x coordinate of your choice?\n ")
-  p1_y_cord = input("What is the y coordinate of your choice?\n ")
-  
-  
-  column_chosen = int(position[1])-1
-  row_chosen = int(position[0])-1
-  map[(column_chosen)][(row_chosen)] = "X"
-  
-  print(f"{row1}\n{row2}\n{row3}")
+    # map[(p1_y_cord][()]
+#
+# column_chosen = int(position[1])-1
+# row_chosen = int(position[0])-1
+# map[(column_chosen)][(row_chosen)] = "X"
+
+print(f"{row0}\n{row1}\n{row2}")
