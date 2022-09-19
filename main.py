@@ -8,7 +8,7 @@ while True:
 
 
   p1_x_cord = input("What is the x coordinate of your choice?\n ")
-  p2_y_cord = input("What is the y coordinate of your choice?\n ")
+  p1_y_cord = input("What is the y coordinate of your choice?\n ")
   
   
   column_chosen = int(position[1])-1
