@@ -1,4 +1,4 @@
-def end_game_check():
+def end_game_check2():
     if row0[0] == row0[1] == row0[2]:
         return False
     elif row1[0] == row1[1] == row2[2]:
