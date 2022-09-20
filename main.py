@@ -1,4 +1,5 @@
 def end_game_check():
+    """"Checks win and tie conditions"""
     if row0[0] == row0[1] == row0[2] and row0[0] != "⬜️":
         if row0[0] == "X    ":
             print("Player 1 wins!")
@@ -57,13 +58,9 @@ def end_game_check():
     elif turns_taken == 9:
         print("Cats game!")
         return False
+
     else:
         return True
-
-# def win_lose_tie():
-
-
-
 
 
 # Start Conditions
@@ -124,10 +121,19 @@ while game_continue:
             #records player 2's move
             turns_taken += 1
             player_turn = "1"
-            end_game_check()
-            print(end_game_check())
+            game_continue = end_game_check()
             #Shows update of player 2's move
             print("     Column0  Column1  Column2")
             print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
-    print(game_continue)
-    game_continue = end_game_check()
+
+    #Ask for restart after game ends, resets to start conditions
+    if not game_continue:
+        if input("Would you like to play again? y/n") == "y":
+            game_continue = True
+            turns_taken = 0
+            player_turn = "1"
+            row0 = ["⬜️", "⬜️", "⬜️"]
+            row1 = ["⬜️", "⬜️", "⬜️"]
+            row2 = ["⬜️", "⬜️", "⬜️"]
+            print("     Column0  Column1  Column2")
+            print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
