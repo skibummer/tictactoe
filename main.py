@@ -85,12 +85,12 @@ player_turn = "1"
 
 while game_continue:
 
-    if player_turn == "1":
+    if player_turn == "1" and game_continue == True:
         p1_row_choice = int(input("Player 1: Choose the row of your move.\n "))
         p1_column_choice = int(input("Player 1: Choose the column of your move. \n "))
 
         # checking if choice is valid.
-        if not  0 <= p1_column_choice <= 2 and 0 <= p1_row_choice <= 2:
+        if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or  p1_row_choice > 2:
             print("Try again")
 
         # checking if choice is already taken.
@@ -109,11 +109,11 @@ while game_continue:
 
 
     #Player 2's Move
-    if player_turn == "2":
+    if player_turn == "2" and game_continue == True:
         p2_row_choice = int(input("Player 2: Choose the row of your move.\n "))
         p2_column_choice = int(input("Player 2: Choose the column of your move. \n "))
 
-        if not  0 <= p2_column_choice <= 2 and 0 <= p2_row_choice <= 2:
+        if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or  p2_row_choice > 2:
             print("Try again")
 
         elif map[p2_row_choice][p2_column_choice] != "⬜️":
@@ -129,5 +129,5 @@ while game_continue:
             #Shows update of player 2's move
             print("     Column0  Column1  Column2")
             print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
-
+    print(game_continue)
     game_continue = end_game_check()
