@@ -85,7 +85,7 @@ while game_continue:
 
         # checking if choice is valid.
         if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or  p1_row_choice > 2:
-            print("Try again")
+            print("Will you please try again")
 
         # checking if choice is already taken.
         elif map[p1_row_choice][p1_column_choice] != "⬜️":
