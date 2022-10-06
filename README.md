@@ -1,1 +1,3 @@
-# A text based tic tac toe game that's supposed to be able to be ran from the command line.
+# right click in the project directory
+# open your shell of choice inside the directory
+# use "py main.py"
