@@ -10,4 +10,5 @@ This allows for rematches as well as allowing a player to try again if they inpu
 You'll need to download python 3.10.
 
 Enter the following into your prreferred shell to get started.
+
 py main.py
