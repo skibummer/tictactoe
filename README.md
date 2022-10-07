@@ -11,7 +11,7 @@ Python 3.10.7
 
 It prints a tic-tac-toe grid with labeled rows and columns. Two human players make choices by entering coordinates,
 one integer at a time to refer to a row and column. The coordinates refer to a spot on the grid. If the coordinate is blank,
-then whichever player has the current turn puts down their mark, either "_X__" or "_O__". If the coordinate is already taken,
+then whichever player has the current turn puts down their mark, either "`_X__`" or "`_O__`". If the coordinate is already taken,
 the user will recieve a prompt to try again.
 
 Player 1 always starts first with "`_X__`"
