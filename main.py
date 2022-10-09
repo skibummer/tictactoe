@@ -122,7 +122,7 @@ def new_game():
                 print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
         # Ask for restart after game ends, resets to start conditions
-        if not game_continue:
+        else:
             if input("Would you like to play again? y/n\n") == "y":
                 new_game()
             else:
