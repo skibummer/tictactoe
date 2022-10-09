@@ -87,6 +87,7 @@ print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
 
 while game_continue:
+    # game_continue = False
     # Player 1 Turn
     if player_turn == "1" and game_continue == True:
         # Pl
@@ -143,3 +144,5 @@ while game_continue:
             player_turn = "1"
             print("_____Column0_Column1_Column2")
             print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
+        else:
+            print("Goodbye")
