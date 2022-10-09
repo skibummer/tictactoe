@@ -64,6 +64,7 @@ def new_game():
         else:
             return True
 
+    # Set starting conditions and print screen
     row0 = ["____", "____", "____"]
     row1 = ["____", "____", "____"]
     row2 = ["____", "____", "____"]
@@ -77,7 +78,7 @@ def new_game():
     while game_continue:
         # game_continue = False
         # Player 1 Turn
-        if player_turn == "1" and game_continue == True:
+        if player_turn == "1":
             # Pl
             p1_row_choice = int(input("Player 1: Choose the row of your move. ('0', '1', or '2')\n "))
             p1_column_choice = int(input("Player 1: Choose the column of your move. ('0', '1', or '2')\n "))
@@ -99,7 +100,7 @@ def new_game():
                 print("     Column0  Column1  Column2")
                 print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
-        #Player 2's Move
+        # Player 2's Move
         if player_turn == "2" and game_continue == True:
             p2_row_choice = int(input("Player 2: Choose the row of your move.('0', '1', or '2')\n "))
             p2_column_choice = int(input("Player 2: Choose the column of your move. ('0', '1', or '2')\n "))
@@ -112,18 +113,20 @@ def new_game():
 
             else:
                 map[p2_row_choice][p2_column_choice] = "_O__"
-                #records player 2's move
+                # records player 2's move
                 turns_taken += 1
                 player_turn = "1"
                 game_continue = end_game_check()
-                #Shows update of player 2's move
+                # Shows update of player 2's move
                 print("     Column0  Column1  Column2")
                 print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
-        #Ask for restart after game ends, resets to start conditions
+        # Ask for restart after game ends, resets to start conditions
         if not game_continue:
             if input("Would you like to play again? y/n:") == "y":
                 new_game()
             else:
                 print("Goodbye")
+
+
 new_game()
