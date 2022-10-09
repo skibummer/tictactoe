@@ -68,7 +68,7 @@ def new_game():
     row0 = ["____", "____", "____"]
     row1 = ["____", "____", "____"]
     row2 = ["____", "____", "____"]
-    map = [row0, row1, row2]
+    game_map = [row0, row1, row2]
     game_continue = True
     turns_taken = 0
     player_turn = "1"
@@ -88,12 +88,12 @@ def new_game():
                 print("Try again")
 
             # checking if choice is already taken.
-            elif map[p1_row_choice][p1_column_choice] != "____":
+            elif game_map[p1_row_choice][p1_column_choice] != "____":
                 print("That box is already chosen, pick an empty coordinate")
 
             # Show's update of player 1's move
             else:
-                map[p1_row_choice][p1_column_choice] = "_X__"
+                game_map[p1_row_choice][p1_column_choice] = "_X__"
                 turns_taken += 1
                 player_turn = "2"
                 game_continue = end_game_check()
@@ -108,11 +108,11 @@ def new_game():
             if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or  p2_row_choice > 2:
                 print("Try again")
 
-            elif map[p2_row_choice][p2_column_choice] != "____":
+            elif game_map[p2_row_choice][p2_column_choice] != "____":
                 print("That box is already chosen, pick an empty coordinate")
 
             else:
-                map[p2_row_choice][p2_column_choice] = "_O__"
+                game_map[p2_row_choice][p2_column_choice] = "_O__"
                 # records player 2's move
                 turns_taken += 1
                 player_turn = "1"
