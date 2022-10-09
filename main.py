@@ -64,72 +64,65 @@ def end_game_check():
         return True
 
 # Start Conditions
-row0 = ["____", "____", "____"]
-row1 = ["____", "____", "____"]
-row2 = ["____", "____", "____"]
-map = [row0, row1, row2]
-print("     Column0  Column1  Column2")
-print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
-game_continue = True
-turns_taken = 0
-player_turn = "1"
+def new_game():
+    row0 = ["____", "____", "____"]
+    row1 = ["____", "____", "____"]
+    row2 = ["____", "____", "____"]
+    map = [row0, row1, row2]
+    print("_____Column0_Column1_Column2")
+    print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
+    game_continue = True
+    turns_taken = 0
+    player_turn = "1"
 
-# TODO UX/UI improvements to prevent user from crashing game
+    while game_continue:
+        # Player 1 Turn
+        if player_turn == "1" and game_continue == True:
+            # Pl
+            p1_row_choice = int(input("Player 1: Choose the row of your move. ('0', '1', or '2')\n "))
+            p1_column_choice = int(input("Player 1: Choose the column of your move. ('0', '1', or '2')\n "))
+
+            # checking if choice is valid.
+            if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or  p1_row_choice > 2:
+                print("Try again")
+
+            # checking if choice is already taken.
+            elif map[p1_row_choice][p1_column_choice] != "____":
+                print("That box is already chosen, pick an empty coordinate")
+
+            # Show's update of player 1's move
+            else:
+                map[p1_row_choice][p1_column_choice] = "_X__"
+                turns_taken += 1
+                player_turn = "2"
+                game_continue = end_game_check()
+                print("     Column0  Column1  Column2")
+                print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
 
-while game_continue:
-    #Player 1 Turn
-    if player_turn == "1" and game_continue == True:
-        p1_row_choice = int(input("Player 1: Choose the row of your move. ('0', '1', or '2')\n "))
-        p1_column_choice = int(input("Player 1: Choose the column of your move. ('0', '1', or '2')\n "))
+        #Player 2's Move
+        if player_turn == "2" and game_continue == True:
+            p2_row_choice = int(input("Player 2: Choose the row of your move.('0', '1', or '2')\n "))
+            p2_column_choice = int(input("Player 2: Choose the column of your move. ('0', '1', or '2')\n "))
 
-        # checking if choice is valid.
-        if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or  p1_row_choice > 2:
-            print("Try again")
+            if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or  p2_row_choice > 2:
+                print("Try again")
 
-        # checking if choice is already taken.
-        elif map[p1_row_choice][p1_column_choice] != "____":
-            print("That box is already chosen, pick an empty coordinate")
+            elif map[p2_row_choice][p2_column_choice] != "____":
+                print("That box is already chosen, pick an empty coordinate")
 
-        # Show's update of player 1's move
-        else:
-            map[p1_row_choice][p1_column_choice] = "_X__"
-            turns_taken += 1
-            player_turn = "2"
-            game_continue = end_game_check()
-            print("     Column0  Column1  Column2")
-            print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
+            else:
+                map[p2_row_choice][p2_column_choice] = "_O__"
+                #records player 2's move
+                turns_taken += 1
+                player_turn = "1"
+                game_continue = end_game_check()
+                #Shows update of player 2's move
+                print("     Column0  Column1  Column2")
+                print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
-
-    #Player 2's Move
-    if player_turn == "2" and game_continue == True:
-        p2_row_choice = int(input("Player 2: Choose the row of your move.('0', '1', or '2')\n "))
-        p2_column_choice = int(input("Player 2: Choose the column of your move. ('0', '1', or '2')\n "))
-
-        if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or  p2_row_choice > 2:
-            print("Try again")
-
-        elif map[p2_row_choice][p2_column_choice] != "____":
-            print("That box is already chosen, pick an empty coordinate")
-
-        else:
-            map[p2_row_choice][p2_column_choice] = "_O__"
-            #records player 2's move
-            turns_taken += 1
-            player_turn = "1"
-            game_continue = end_game_check()
-            #Shows update of player 2's move
-            print("     Column0  Column1  Column2")
-            print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
-
-    #Ask for restart after game ends, resets to start conditions
-    if not game_continue:
-        if input("Would you like to play again? y/n") == "y":
-            game_continue = True
-            turns_taken = 0
-            player_turn = "1"
-            row0 = ["____", "____", "____"]
-            row1 = ["____", "____", "____"]
-            row2 = ["____", "____", "____"]
-            print("____Column0___Column1___Column2")
-            print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
+        #Ask for restart after game ends, resets to start conditions
+        if not game_continue:
+            if input("Would you like to play again? y/n") == "y":
+                new_game()
+new_game()
