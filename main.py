@@ -1,83 +1,69 @@
-def end_game_check():
-    """"Checks win and tie conditions"""
-    if row0[0] == row0[1] == row0[2] and row0[0] != "____":
-        if row0[0] == "_X__":
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
-        return False
-
-    elif row1[0] == row1[1] == row1[2] and row1[0] != "____":
-        if row1[0] == "_X__":
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
-        return False
-
-    elif row2[0] == row2[1] == row2[2]  and row2[0] != "____":
-        if row2[0] == "_X__":
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
-        return False
-
-    elif row0[0] == row1[0] == row2[0]  and row0[0] != "____":
-        if row0[0] == "_X__":
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
-        return False
-
-    elif row0[1] == row1[1] == row2[1]  and row0[1] != "____":
-        if row0[1] == "_X__":
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
-        return False
-
-    elif row0[2] == row1[2] == row2[2]  and row0[2] != "____":
-        if row0[2] == "_X__":
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
-        return False
-
-    elif row0[0] == row1[1] == row2[2]  and row0[0] != "____":
-        if row0[0] == "_X__":
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
-        return False
-
-    elif row0[2] == row1[1] == row2[0]  and row0[2] != "____":
-        if row0[2] == "_X__":
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
-        return False
-
-    elif turns_taken == 9:
-        print("Cats game!")
-        return False
-
-    else:
-        return True
-
-# def new_game():
-#     """Start Conditions"""
-#     row0 = ["____", "____", "____"]
-#     row1 = ["____", "____", "____"]
-#     row2 = ["____", "____", "____"]
-#     map = [row0, row1, row2]
-#     print("_____Column0_Column1_Column2")
-#     print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
-#     game_continue = True
-#     turns_taken = 0
-#     player_turn = "1"
-
-
-
 def new_game():
+    def end_game_check():
+        """"Checks win and tie conditions"""
+        if row0[0] == row0[1] == row0[2] and row0[0] != "____":
+            if row0[0] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif row1[0] == row1[1] == row1[2] and row1[0] != "____":
+            if row1[0] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif row2[0] == row2[1] == row2[2] and row2[0] != "____":
+            if row2[0] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif row0[0] == row1[0] == row2[0] and row0[0] != "____":
+            if row0[0] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif row0[1] == row1[1] == row2[1] and row0[1] != "____":
+            if row0[1] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif row0[2] == row1[2] == row2[2] and row0[2] != "____":
+            if row0[2] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif row0[0] == row1[1] == row2[2] and row0[0] != "____":
+            if row0[0] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif row0[2] == row1[1] == row2[0] and row0[2] != "____":
+            if row0[2] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif turns_taken == 9:
+            print("Cats game!")
+            return False
+
+        else:
+            return True
+
     row0 = ["____", "____", "____"]
     row1 = ["____", "____", "____"]
     row2 = ["____", "____", "____"]
@@ -113,7 +99,6 @@ def new_game():
                 print("     Column0  Column1  Column2")
                 print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
-
         #Player 2's Move
         if player_turn == "2" and game_continue == True:
             p2_row_choice = int(input("Player 2: Choose the row of your move.('0', '1', or '2')\n "))
@@ -138,14 +123,7 @@ def new_game():
         #Ask for restart after game ends, resets to start conditions
         if not game_continue:
             if input("Would you like to play again? y/n:") == "y":
-                row0 = ["____", "____", "____"]
-                row1 = ["____", "____", "____"]
-                row2 = ["____", "____", "____"]
-                game_continue = True
-                turns_taken = 0
-                player_turn = "1"
-                print("_____Column0_Column1_Column2")
-                print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
+                new_game()
             else:
                 print("Goodbye")
 new_game()
