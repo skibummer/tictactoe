@@ -123,7 +123,7 @@ def new_game():
 
         # Ask for restart after game ends, resets to start conditions
         if not game_continue:
-            if input("Would you like to play again? y/n:") == "y":
+            if input("Would you like to play again? y/n\n") == "y":
                 new_game()
             else:
                 print("Goodbye")
