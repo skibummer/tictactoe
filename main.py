@@ -84,7 +84,8 @@ def new_game():
             p1_column_choice = int(input("Player 1: Choose the column of your move. ('0', '1', or '2')\n "))
 
             # checking if choice is valid.
-            if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or  p1_row_choice > 2:
+            if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or p1_row_choice > 2:
+                print(p1_row_choice,p1_column_choice)
                 print("Try again")
 
             # checking if choice is already taken.
@@ -122,7 +123,7 @@ def new_game():
                 print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
         # Ask for restart after game ends, resets to start conditions
-        else:
+        if not game_continue:
             if input("Would you like to play again? y/n\n") == "y":
                 new_game()
             else:
