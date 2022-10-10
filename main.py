@@ -80,7 +80,7 @@ def new_game():
         # check if Player 1 Turn
         if player_turn == "1":
 
-            p1_coordinate_raw = input("Player 2: Choose the coordinate of your move. (for example, 11):  ")
+            p1_coordinate_raw = input("Player 1: Choose the coordinate of your move. (for example, 11):  ")
             p1_coordinate_choice = str(p1_coordinate_raw)
             p1_row_choice = int(p1_coordinate_choice[0])
             p1_column_choice = int(p1_coordinate_choice[1])
