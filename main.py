@@ -114,16 +114,12 @@ def new_game():
             p2_coordinate_choice = str(p2_coordinate_raw)
             p2_row_choice = int(p2_coordinate_choice[0])
             p2_column_choice = int(p2_coordinate_choice[1])
-
+            print(f"{p2_coordinate_choice}")
 
             if len(p2_coordinate_raw) != 2:
                 print("Invalid input, will you please? try again")
 
-
-
-            print(f"{p2_coordinate_choice}")
-
-            if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or p2_row_choice > 2:
+            elif p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or p2_row_choice > 2:
                 print(p2_row_choice, p2_column_choice)
                 print("Invalid input, will you please? try again")
 
