@@ -76,12 +76,15 @@ def new_game():
     print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
     while game_continue:
-        # game_continue = False
-        # Player 1 Turn
+
+        # check if Player 1 Turn
         if player_turn == "1":
-            # Pl
-            p1_row_choice = int(input("Player 1: Choose the row of your move. ('0', '1', or '2')\n "))
-            p1_column_choice = int(input("Player 1: Choose the column of your move. ('0', '1', or '2')\n "))
+            # Player 1 inputs coordinates one at a time
+            p1_coordinate_choice = str(input("Player 1: Choose the coordinate of your move. (for example, 11):  "))
+
+
+            p1_coordinate_str = (str(p1_row_choice) + str(p1_column_choice))
+            print(p1_coordinate_str)
 
             # checking if choice is valid.
             if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or p1_row_choice > 2:
