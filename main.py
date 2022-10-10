@@ -79,7 +79,7 @@ def game_core():
     # Game loop/core
     while game_continue:
 
-        # check if Player 1 Turn
+        # check if Player 1 turn
         if player_turn == "1":
 
             p1_coordinate_raw = input("Player 1: Choose the coordinate of your move. (row,column, for example, 11):  ")
@@ -102,7 +102,7 @@ def game_core():
             elif game_map[p1_row_choice][p1_column_choice] != "____":
                 print("That box is already chosen, pick an empty coordinate")
 
-            # Show's update of player 1's move
+            # update and print player 1's move
             else:
                 game_map[p1_row_choice][p1_column_choice] = "_X__"
                 turns_taken += 1
@@ -111,7 +111,7 @@ def game_core():
                 print("     Column0  Column1  Column2")
                 print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
-        # Player 2's Move
+        # check if Player 2's turn
         if player_turn == "2" and game_continue == True:
 
             p2_coordinate_raw = input("Player 2: Choose the coordinate of your move. (row,column, for example, 11):  ")
