@@ -107,6 +107,7 @@ def new_game():
             p2_column_choice = int(input("Player 2: Choose the column of your move. ('0', '1', or '2')\n "))
 
             if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or  p2_row_choice > 2:
+                print(p2_row_choice, p2_column_choice)
                 print("Try again")
 
             elif game_map[p2_row_choice][p2_column_choice] != "____":
