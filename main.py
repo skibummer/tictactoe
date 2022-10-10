@@ -106,8 +106,14 @@ def new_game():
 
         # Player 2's Move
         if player_turn == "2" and game_continue == True:
-            p2_row_choice = int(input("Player 2: Choose the row of your move.('0', '1', or '2')\n "))
-            p2_column_choice = int(input("Player 2: Choose the column of your move. ('0', '1', or '2')\n "))
+
+            p2_coordinate_choice = str(input("Player 2: Choose the coordinate of your move. (for example, 11):  "))
+
+            for number in p2_coordinate_choice:
+                p2_row_choice = int(p2_coordinate_choice[0])
+                p2_column_choice = int(p2_coordinate_choice[1])
+            print(f"{p2_coordinate_choice}")
+
 
             if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or  p2_row_choice > 2:
                 print(p2_row_choice, p2_column_choice)
