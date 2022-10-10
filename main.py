@@ -76,7 +76,7 @@ def game_core():
     print("_____Column0_Column1_Column2")
     print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
-    # Game loop/core
+    # game loop/core
     while game_continue:
 
         # check if Player 1 turn
@@ -133,6 +133,7 @@ def game_core():
             elif game_map[p2_row_choice][p2_column_choice] != "____":
                 print("That box is already chosen, pick an empty coordinate")
 
+            # update and print player 1's move
             else:
                 game_map[p2_row_choice][p2_column_choice] = "_O__"
                 # records player 2's move
@@ -143,7 +144,7 @@ def game_core():
                 print("     Column0  Column1  Column2")
                 print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
-        # Ask for restart after game ends, resets to start conditions
+        # ask for restart after game ends, resets to start conditions if yes
         if not game_continue:
             if input("Would you like to play again? y/n: ") == "y":
                 game_core()
