@@ -87,12 +87,8 @@ def new_game():
                 p1_column_choice = int(p1_coordinate_choice[1])
             print(f"{p1_coordinate_choice}")
 
-            p1_coordinate_str = (str(p1_row_choice) + str(p1_column_choice))
-            print(p1_coordinate_str)
-
             # checking if choice is valid.
             if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or p1_row_choice > 2:
-                print(p1_row_choice,p1_column_choice)
                 print("Try again")
 
             # checking if choice is already taken.
