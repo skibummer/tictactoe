@@ -79,17 +79,20 @@ def new_game():
 
         # check if Player 1 Turn
         if player_turn == "1":
-            # Player 1 inputs coordinates one at a time
-            p1_coordinate_choice = str(input("Player 1: Choose the coordinate of your move. (for example, 11):  "))
 
-            for number in p1_coordinate_choice:
-                p1_row_choice = int(p1_coordinate_choice[0])
-                p1_column_choice = int(p1_coordinate_choice[1])
+            p1_coordinate_raw = input("Player 2: Choose the coordinate of your move. (for example, 11):  ")
+            p1_coordinate_choice = str(p1_coordinate_raw)
+            p1_row_choice = int(p1_coordinate_choice[0])
+            p1_column_choice = int(p1_coordinate_choice[1])
+
             print(f"{p1_coordinate_choice}")
 
             # checking if choice is valid.
-            if p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or p1_row_choice > 2:
-                print("Try again")
+            if len(p1_coordinate_raw) != 2:
+                print("Invalid input, will you please? try again")
+
+            elif p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or p1_row_choice > 2:
+                print("Invalid input, will you please? try again")
 
             # checking if choice is already taken.
             elif game_map[p1_row_choice][p1_column_choice] != "____":
@@ -107,17 +110,22 @@ def new_game():
         # Player 2's Move
         if player_turn == "2" and game_continue == True:
 
-            p2_coordinate_choice = str(input("Player 2: Choose the coordinate of your move. (for example, 11):  "))
+            p2_coordinate_raw = input("Player 2: Choose the coordinate of your move. (for example, 11):  ")
+            p2_coordinate_choice = str(p2_coordinate_raw)
+            p2_row_choice = int(p2_coordinate_choice[0])
+            p2_column_choice = int(p2_coordinate_choice[1])
 
-            for number in p2_coordinate_choice:
-                p2_row_choice = int(p2_coordinate_choice[0])
-                p2_column_choice = int(p2_coordinate_choice[1])
+
+            if len(p2_coordinate_raw) != 2:
+                print("Invalid input, will you please? try again")
+
+
+
             print(f"{p2_coordinate_choice}")
 
-
-            if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or  p2_row_choice > 2:
+            if p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or p2_row_choice > 2:
                 print(p2_row_choice, p2_column_choice)
-                print("Try again")
+                print("Invalid input, will you please? try again")
 
             elif game_map[p2_row_choice][p2_column_choice] != "____":
                 print("That box is already chosen, pick an empty coordinate")
