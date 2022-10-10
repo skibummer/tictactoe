@@ -82,6 +82,10 @@ def new_game():
             # Player 1 inputs coordinates one at a time
             p1_coordinate_choice = str(input("Player 1: Choose the coordinate of your move. (for example, 11):  "))
 
+            for number in p1_coordinate_choice:
+                p1_row_choice = int(p1_coordinate_choice[0])
+                p1_column_choice = int(p1_coordinate_choice[1])
+            print(f"{p1_coordinate_choice}")
 
             p1_coordinate_str = (str(p1_row_choice) + str(p1_column_choice))
             print(p1_coordinate_str)
