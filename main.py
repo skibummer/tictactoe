@@ -3,7 +3,7 @@ def new_game():
     def game_core():
 
         def end_game_check():
-            """"Checks win and tie conditions"""
+            """"Defines and checks end of game conditions"""
             if row0[0] == row0[1] == row0[2] and row0[0] != "____":
                 if row0[0] == "_X__":
                     print("Player 1 wins!")
