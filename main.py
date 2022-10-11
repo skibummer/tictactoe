@@ -65,6 +65,22 @@ def game_core():
         else:
             return True
 
+    def valid_input_check(coordinate, x_cord, y_cord):
+        """Check if player input is somewhat valid"""
+        # check if coordinate given is within map range
+        if len(coordinate) != 2:
+            print("Invalid input, will you please try again?")
+            return False
+
+        # check if choice is already taken
+        elif game_map[x_cord][y_cord] != "____":
+            print("That box is already chosen, pick an empty coordinate")
+            return False
+        # pass value if somewhat valid
+        else:
+            return True
+
+
     # Set start conditions
     row0 = ["____", "____", "____"]
     row1 = ["____", "____", "____"]
@@ -82,29 +98,17 @@ def game_core():
         # check if Player 1 turn
         if player_turn == "1":
 
-            p1_coordinate_raw = input("Player 1: Choose the coordinate of your move. (row,column, for example, 11):  ")
-            p1_coordinate_choice = str(p1_coordinate_raw)
-            p1_row_choice = int(p1_coordinate_choice[0])
-            p1_column_choice = int(p1_coordinate_choice[1])
+            p1_coord_raw = input("Player 1: Choose the coordinate of your move. (row,column, for example, 11):  ")
+            p1_x_cord = int(p1_coord_raw[0])
+            p1_y_cord = int(p1_coord_raw[1])
 
             # test
-            print(f"{p1_coordinate_choice}")
+            print(f"{p1_coord_raw}")
 
             # check if input is valid character length
-            if len(p1_coordinate_raw) != 2:
-                print("Invalid input, will you please try again?")
+            if valid_input_check(p1_coord_raw, p1_x_cord, p1_y_cord):
 
-            # check if coordinate given is within map range
-            elif p1_column_choice < 0 or p1_column_choice > 2 or p1_row_choice < 0 or p1_row_choice > 2:
-                print("Invalid input, will you please try again?")
-
-            # check if choice is already taken
-            elif game_map[p1_row_choice][p1_column_choice] != "____":
-                print("That box is already chosen, pick an empty coordinate")
-
-            # update and print player 1's move
-            else:
-                game_map[p1_row_choice][p1_column_choice] = "_X__"
+                game_map[p1_x_cord][p1_y_cord] = "_X__"
                 turns_taken += 1
                 player_turn = "2"
                 game_continue = end_game_check()
