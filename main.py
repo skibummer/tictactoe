@@ -80,11 +80,16 @@ def game_core():
         else:
             return True
 
-    def mark_map(y_coord, x_coord):
+    def mark_map(y_coord, x_coord, turns_taken):
         if player_turn == "1":
             game_map[y_coord][x_coord] = "_X__"
+
         elif player_turn == "2":
             game_map[y_coord][x_coord] = "_0__"
+        # update game map with player move
+        print("     Column0  Column1  Column2")
+        print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
+
 
     # Set start conditions
     row0 = ["____", "____", "____"]
@@ -106,19 +111,17 @@ def game_core():
             p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
             p1_y_coord = int(p1_coord_raw[0])
             p1_x_coord = int(p1_coord_raw[1])
-
-            # test
-            print(f"{p1_coord_raw}")
+            # test input
+            print(p1_coord_raw)
 
             # check if input is valid character length
             if valid_input_check(p1_coord_raw, p1_y_coord, p1_x_coord):
                 """If input is somewhat valid, finish player 1 turn"""
-                mark_map(p1_y_coord, p1_x_coord)
-                turns_taken += 1
+                mark_map(p1_y_coord, p1_x_coord, turns_taken)
+                # turns_taken += 1
+                print(turns_taken)
                 player_turn = "2"
                 game_continue = end_game_check()
-                print("     Column0  Column1  Column2")
-                print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
         # check if Player 2's turn
         while player_turn == "2" and game_continue == True:
@@ -126,17 +129,16 @@ def game_core():
             p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
             p2_y_coord = int(p2_coord_raw[0])
             p2_x_coord = int(p2_coord_raw[1])
-            print(f"{p2_coord_raw}")
+            # test input
+            print(p2_coord_raw)
 
             if valid_input_check(p2_coord_raw, p2_y_coord, p2_x_coord):
                 # record player 2's move and check end of game conditions
-                mark_map(p2_y_coord, p2_x_coord)
-                turns_taken += 1
+                mark_map(p2_y_coord, p2_x_coord, turns_taken)
+                # turns_taken += 1
+                print(turns_taken)
                 player_turn = "1"
                 game_continue = end_game_check()
-                # Shows update of player 2's move
-                print("     Column0  Column1  Column2")
-                print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
         # ask for restart after game ends, resets to start conditions if yes
         if not game_continue:
