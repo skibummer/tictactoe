@@ -86,7 +86,6 @@ def game_core():
         elif player_turn == "2":
             game_map[y_coord][x_coord] = "_0__"
 
-
     # Set start conditions
     row0 = ["____", "____", "____"]
     row1 = ["____", "____", "____"]
@@ -131,7 +130,7 @@ def game_core():
 
             if valid_input_check(p2_coord_raw, p2_y_coord, p2_x_coord):
                 # record player 2's move and check end of game conditions
-                game_map[p2_y_coord][p2_x_coord] = "_O__"
+                mark_map(p2_y_coord, p2_x_coord)
                 turns_taken += 1
                 player_turn = "1"
                 game_continue = end_game_check()
