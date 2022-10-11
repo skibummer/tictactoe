@@ -118,8 +118,8 @@ def game_core():
         while player_turn == "2" and game_continue == True:
 
             p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
-            p2_row_choice = int(p2_coord_raw[0])
-            p2_column_choice = int(p2_coord_raw[1])
+            p2_y_coord = int(p2_coord_raw[0])
+            p2_x_coord = int(p2_coord_raw[1])
             print(f"{p2_coord_raw}")
 
             # check if input is valid character length
@@ -127,17 +127,17 @@ def game_core():
                 print("Invalid input, will you please? try again")
 
             # check if coordinate given is within map range
-            elif p2_column_choice < 0 or p2_column_choice > 2 or p2_row_choice < 0 or p2_row_choice > 2:
-                print(p2_row_choice, p2_column_choice)
+            elif p2_x_coord < 0 or p2_x_coord > 2 or p2_y_coord < 0 or p2_y_coord > 2:
+                print(p2_y_coord, p2_x_coord)
                 print("Invalid input, will you please? try again")
 
             # check if choice is already taken
-            elif game_map[p2_row_choice][p2_column_choice] != "____":
+            elif game_map[p2_y_coord][p2_x_coord] != "____":
                 print("That box is already chosen, pick an empty coordinate")
 
             # update and print player 1's move
             else:
-                game_map[p2_row_choice][p2_column_choice] = "_O__"
+                game_map[p2_y_coord][p2_x_coord] = "_O__"
                 # records player 2's move
                 turns_taken += 1
                 player_turn = "1"
