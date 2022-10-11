@@ -72,6 +72,10 @@ def game_core():
             print("Invalid input, will you please try again?")
             return False
 
+        elif x_cord < 0 or x_cord > 2 or y_cord < 0 or y_cord > 2:
+            print(y_cord, x_cord)
+            print("Invalid input, will you please? try again")
+
         # check if choice is already taken
         elif game_map[y_cord][x_cord] != "____":
             print("That box is already chosen, pick an empty coordinate")
