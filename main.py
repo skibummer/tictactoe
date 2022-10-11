@@ -98,16 +98,16 @@ def game_core():
         while player_turn == "1":
 
             p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
-            p1_y_cord = int(p1_coord_raw[0])
-            p1_x_cord = int(p1_coord_raw[1])
+            p1_y_coord = int(p1_coord_raw[0])
+            p1_x_coord = int(p1_coord_raw[1])
 
             # test
             print(f"{p1_coord_raw}")
 
             # check if input is valid character length
-            if valid_input_check(p1_coord_raw, p1_y_cord, p1_x_cord):
+            if valid_input_check(p1_coord_raw, p1_y_coord, p1_x_coord):
                 """If input is somewhat valid, finish player 1 turn"""
-                game_map[p1_y_cord][p1_x_cord] = "_X__"
+                game_map[p1_y_coord][p1_x_coord] = "_X__"
                 turns_taken += 1
                 player_turn = "2"
                 game_continue = end_game_check()
