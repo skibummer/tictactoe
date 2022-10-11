@@ -1,7 +1,7 @@
 def game_core():
     """TicTacToe"""
     def end_game_check():
-        """"Defines and checks end of game conditions"""
+        """"Define and check end of game conditions"""
         if row0[0] == row0[1] == row0[2] and row0[0] != "____":
             if row0[0] == "_X__":
                 print("Player 1 wins!")
@@ -84,12 +84,23 @@ def game_core():
         else:
             return True
 
-    def mark_map(y_coord, x_coord):
+    def mark_map(y_coord, x_coord, turns):
+        """Check which player turn and use appropriate mark"""
+        # test
+        print(f"player_turn {player_turn}")
+        print(f"turns_taken {turns_taken}")
+
         if player_turn == "1":
             game_map[y_coord][x_coord] = "_X__"
+            turns += 1
 
         elif player_turn == "2":
             game_map[y_coord][x_coord] = "_0__"
+            turns += 1
+
+
+        print(f"turns_taken {turns_taken}")
+
         # update game map with player move
         print("     Column0  Column1  Column2")
         print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
@@ -121,8 +132,8 @@ def game_core():
             # check if input is valid character length
             if valid_input_check(p1_coord_raw, p1_y_coord, p1_x_coord):
                 """If input is somewhat valid, finish player 1 turn"""
-                mark_map(p1_y_coord, p1_x_coord)
-                turns_taken += 1
+                mark_map(p1_y_coord, p1_x_coord, turns_taken)
+                # turns_taken += 1
                 print(turns_taken)
                 player_turn = "2"
                 game_continue = end_game_check()
@@ -138,8 +149,8 @@ def game_core():
 
             if valid_input_check(p2_coord_raw, p2_y_coord, p2_x_coord):
                 # record player 2's move and check end of game conditions
-                mark_map(p2_y_coord, p2_x_coord)
-                turns_taken += 1
+                mark_map(p2_y_coord, p2_x_coord, turns_taken)
+                # turns_taken += 1
                 print(turns_taken)
                 player_turn = "1"
                 game_continue = end_game_check()
