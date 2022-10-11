@@ -65,7 +65,7 @@ def game_core():
         else:
             return True
 
-    def valid_input_check(coordinate, x_cord, y_cord):
+    def valid_input_check(coordinate, y_cord, x_cord):
         """Check if player input is somewhat valid"""
         # check if coordinate given is within map range
         if len(coordinate) != 2:
@@ -73,7 +73,7 @@ def game_core():
             return False
 
         # check if choice is already taken
-        elif game_map[x_cord][y_cord] != "____":
+        elif game_map[y_cord][x_cord] != "____":
             print("That box is already chosen, pick an empty coordinate")
             return False
         # pass value if somewhat valid
@@ -98,16 +98,16 @@ def game_core():
         while player_turn == "1":
 
             p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
-            p1_x_cord = int(p1_coord_raw[0])
-            p1_y_cord = int(p1_coord_raw[1])
+            p1_y_cord = int(p1_coord_raw[0])
+            p1_x_cord = int(p1_coord_raw[1])
 
             # test
             print(f"{p1_coord_raw}")
 
             # check if input is valid character length
-            if valid_input_check(p1_coord_raw, p1_x_cord, p1_y_cord):
+            if valid_input_check(p1_coord_raw, p1_y_cord, p1_x_cord):
                 """If input is somewhat valid, finish player 1 turn"""
-                game_map[p1_x_cord][p1_y_cord] = "_X__"
+                game_map[p1_y_cord][p1_x_cord] = "_X__"
                 turns_taken += 1
                 player_turn = "2"
                 game_continue = end_game_check()
