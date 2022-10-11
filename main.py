@@ -80,6 +80,13 @@ def game_core():
         else:
             return True
 
+    def mark_map(y_coord, x_coord):
+        if player_turn == "1":
+            game_map[y_coord][x_coord] = "_X__"
+        elif player_turn == "2":
+            game_map[y_coord][x_coord] = "_0__"
+
+
     # Set start conditions
     row0 = ["____", "____", "____"]
     row1 = ["____", "____", "____"]
@@ -123,9 +130,8 @@ def game_core():
             print(f"{p2_coord_raw}")
 
             if valid_input_check(p2_coord_raw, p2_y_coord, p2_x_coord):
-
+                # record player 2's move and check end of game conditions
                 game_map[p2_y_coord][p2_x_coord] = "_O__"
-                # records player 2's move
                 turns_taken += 1
                 player_turn = "1"
                 game_continue = end_game_check()
