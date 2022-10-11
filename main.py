@@ -84,7 +84,7 @@ def game_core():
         else:
             return True
 
-    def mark_map(y_coord, x_coord, turns_taken):
+    def mark_map(y_coord, x_coord):
         if player_turn == "1":
             game_map[y_coord][x_coord] = "_X__"
 
@@ -121,8 +121,8 @@ def game_core():
             # check if input is valid character length
             if valid_input_check(p1_coord_raw, p1_y_coord, p1_x_coord):
                 """If input is somewhat valid, finish player 1 turn"""
-                mark_map(p1_y_coord, p1_x_coord, turns_taken)
-                # turns_taken += 1
+                mark_map(p1_y_coord, p1_x_coord)
+                turns_taken += 1
                 print(turns_taken)
                 player_turn = "2"
                 game_continue = end_game_check()
@@ -138,8 +138,8 @@ def game_core():
 
             if valid_input_check(p2_coord_raw, p2_y_coord, p2_x_coord):
                 # record player 2's move and check end of game conditions
-                mark_map(p2_y_coord, p2_x_coord, turns_taken)
-                # turns_taken += 1
+                mark_map(p2_y_coord, p2_x_coord)
+                turns_taken += 1
                 print(turns_taken)
                 player_turn = "1"
                 game_continue = end_game_check()
