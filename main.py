@@ -114,7 +114,7 @@ def game_core():
             # check if input is valid character length
             if valid_input_check(p1_coord_raw, p1_y_coord, p1_x_coord):
                 """If input is somewhat valid, finish player 1 turn"""
-                game_map[p1_y_coord][p1_x_coord] = "_X__"
+                mark_map(p1_y_coord, p1_x_coord)
                 turns_taken += 1
                 player_turn = "2"
                 game_continue = end_game_check()
