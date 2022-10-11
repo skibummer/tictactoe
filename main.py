@@ -80,7 +80,6 @@ def game_core():
         else:
             return True
 
-
     # Set start conditions
     row0 = ["____", "____", "____"]
     row1 = ["____", "____", "____"]
@@ -96,7 +95,7 @@ def game_core():
     while game_continue:
 
         # check if Player 1 turn
-        if player_turn == "1":
+        while player_turn == "1":
 
             p1_coord_raw = input("Player 1: Choose the coordinate of your move. (row,column, for example, 11):  ")
             p1_x_cord = int(p1_coord_raw[0])
@@ -107,7 +106,7 @@ def game_core():
 
             # check if input is valid character length
             if valid_input_check(p1_coord_raw, p1_x_cord, p1_y_cord):
-
+                """If input is somewhat valid, finish player 1 turn"""
                 game_map[p1_x_cord][p1_y_cord] = "_X__"
                 turns_taken += 1
                 player_turn = "2"
@@ -116,7 +115,7 @@ def game_core():
                 print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
 
         # check if Player 2's turn
-        if player_turn == "2" and game_continue == True:
+        while player_turn == "2" and game_continue == True:
 
             p2_coordinate_raw = input("Player 2: Choose the coordinate of your move. (row,column, for example, 11):  ")
             p2_coordinate_choice = str(p2_coordinate_raw)
