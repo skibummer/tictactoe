@@ -97,7 +97,7 @@ def game_core():
         # check if Player 1 turn
         while player_turn == "1":
 
-            p1_coord_raw = input("Player 1: Choose the coordinate of your move. (row,column, for example, 11):  ")
+            p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
             p1_x_cord = int(p1_coord_raw[0])
             p1_y_cord = int(p1_coord_raw[1])
 
@@ -117,7 +117,7 @@ def game_core():
         # check if Player 2's turn
         while player_turn == "2" and game_continue == True:
 
-            p2_coordinate_raw = input("Player 2: Choose the coordinate of your move. (row,column, for example, 11):  ")
+            p2_coordinate_raw = input("Player 2: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
             p2_coordinate_choice = str(p2_coordinate_raw)
             p2_row_choice = int(p2_coordinate_choice[0])
             p2_column_choice = int(p2_coordinate_choice[1])
