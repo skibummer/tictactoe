@@ -1,5 +1,8 @@
 def game_core():
     """TicTacToe"""
+
+
+
     def end_game_check():
         """"Define and check end of game conditions"""
         if row0[0] == row0[1] == row0[2] and row0[0] != "____":
@@ -84,7 +87,7 @@ def game_core():
         else:
             return True
 
-    def mark_map(y_coord, x_coord, turns):
+    def mark_map(y_coord, x_coord):
         """Check which player turn and use appropriate mark"""
         # test
         # print(f"player_turn {player_turn}")
@@ -96,7 +99,7 @@ def game_core():
         elif player_turn == "2":
             game_map[y_coord][x_coord] = "_0__"
 
-        # print(f"turns_taken {turns_taken}")
+        # print(f"turns_taken: {turns_taken}")
         # update game map with player move
         print("     Column0  Column1  Column2")
         print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
@@ -118,9 +121,9 @@ def game_core():
         # check if Player 1 turn
         while player_turn == "1":
 
-            p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
-            p1_y_coord = int(p1_coord_raw[0])
-            p1_x_coord = int(p1_coord_raw[1])
+            p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<column><row>, for example, 11):  ")
+            p1_y_coord = int(p1_coord_raw[1])
+            p1_x_coord = int(p1_coord_raw[0])
             # test input
             print(p1_coord_raw)
 
@@ -135,9 +138,9 @@ def game_core():
         # check if Player 2's turn
         while player_turn == "2" and game_continue == True:
 
-            p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<row><column>, for example, 11):  ")
-            p2_y_coord = int(p2_coord_raw[0])
-            p2_x_coord = int(p2_coord_raw[1])
+            p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<column><row>, for example, 11):  ")
+            p2_y_coord = int(p2_coord_raw[1])
+            p2_x_coord = int(p2_coord_raw[0])
             # test input
             print(p2_coord_raw)
 
