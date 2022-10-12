@@ -120,52 +120,58 @@ class TicTacToe:
 
         if self.player_turn == "1":
             self.game_map[y_coord][x_coord] = "__X__"
+            self.player_turn = "2"
 
         elif self.player_turn == "2":
             self.game_map[y_coord][x_coord] = "__0__"
+            self.player_turn = "1"
 
         self.turns_taken += 1
         self.print_map()
         self.game_continue = self.end_game_check()
+
+    def player_move(self):
+        coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
+        input_x_coord = int(coord_raw[0]) - 1
+        input_y_coord = int(coord_raw[1]) - 1
+
 
     def game_core(self):
 
         self.print_map()
         while self.game_continue:
 
+            coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
+            x_coord = int(coord_raw[0]) - 1
+            y_coord = int(coord_raw[1]) - 1
+
             # check if Player 1's turn
             if self.player_turn == "1":
 
                 # prompt Player 1 for input
-                p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
-                p1_x_coord = int(p1_coord_raw[0]) - 1
-                p1_y_coord = int(p1_coord_raw[1]) - 1
+                # p1_coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
+                # p1_x_coord = int(coord_raw[0]) - 1
+                # p1_y_coord = int(coord_raw[1]) - 1
 
                 # check if Player 1 input is valid
-                if self.valid_input_check(p1_coord_raw, p1_x_coord, p1_y_coord):
+                if self.valid_input_check(coord_raw, x_coord,y_coord):
 
                     # record player 2's move and check end of game conditions
-                    self.mark_map(p1_x_coord, p1_y_coord)
-
-                    # switch turn
-                    self.player_turn = "2"
+                    self.mark_map(x_coord, y_coord)
 
             # check if Player 2's turn
             elif self.player_turn == "2":
 
                 # prompt Player 2 for input
-                p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
-                p2_x_coord = int(p2_coord_raw[0]) - 1
-                p2_y_coord = int(p2_coord_raw[1]) - 1
+                # p2_coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
+                # p2_x_coord = int(coord_raw[0]) - 1
+                # p2_y_coord = int(coord_raw[1]) - 1
 
                 # check if Player 2 input is valid
-                if self.valid_input_check(p2_coord_raw, p2_x_coord, p2_y_coord):
+                if self.valid_input_check(coord_raw, x_coord, y_coord):
 
                     # record player 2's move and check end of game conditions
-                    self.mark_map(p2_x_coord, p2_y_coord)
-
-                    # switch turn
-                    self.player_turn = "1"
+                    self.mark_map(x_coord, y_coord)
 
 
 new_game_on = True
