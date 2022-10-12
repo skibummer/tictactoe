@@ -13,7 +13,7 @@ class TicTacToe:
         """Print current tic-tac-toe grid"""
         print("\nTic-tac-toe\n")
         print(f"3{self.row3}\n2{self.row2}\n1{self.row1}")
-        print("_____1______2_______3____\n")
+        print("____1_______2_______3____\n")
 
     def end_game_check(self):
         """
@@ -90,11 +90,13 @@ class TicTacToe:
             print("Cats game!")
             return False
 
+        # no end of game conditions met
         else:
             return True
 
     def valid_input_check(self, coordinate, x_cord, y_cord):
         """Check if player input is somewhat valid"""
+
         # check if coordinate character length is 2
         if len(coordinate) != 2:
             print("Invalid input, will you please try again?")
@@ -108,6 +110,7 @@ class TicTacToe:
         elif self.game_map[y_cord][x_cord] != "____":
             print("That box is already chosen, pick an empty coordinate")
             return False
+
         # continue turn if input is somewhat valid
         else:
             return True
@@ -126,11 +129,14 @@ class TicTacToe:
         self.game_continue = self.end_game_check()
 
     def game_core(self):
+
+        self.print_map()
         while self.game_continue:
 
             # check if Player 1's turn
             if self.player_turn == "1":
 
+                # prompt Player 1 for input
                 p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
                 p1_x_coord = int(p1_coord_raw[0]) - 1
                 p1_y_coord = int(p1_coord_raw[1]) - 1
@@ -147,7 +153,7 @@ class TicTacToe:
             # check if Player 2's turn
             elif self.player_turn == "2":
 
-                # prompt player 2 for input
+                # prompt Player 2 for input
                 p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
                 p2_x_coord = int(p2_coord_raw[0]) - 1
                 p2_y_coord = int(p2_coord_raw[1]) - 1
@@ -166,7 +172,6 @@ new_game_on = True
 
 while new_game_on:
     new_game = TicTacToe()
-    new_game.print_map()
     new_game.game_core()
     if input("Would you like to play again? y/n: ") == "y":
         new_game_on = True
