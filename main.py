@@ -111,12 +111,17 @@ class TicTacToe:
             print("That box is already chosen, pick an empty coordinate")
             return False
 
-        # continue turn if input is somewhat valid
+        # continue if input passes checks
         else:
             return True
 
     def mark_map(self, x_coord, y_coord):
-        """Check which player turn and use appropriate mark"""
+        """Check which player turn and use appropriate mark
+            Switch player turn
+            Record turn taken
+            Print map
+            Check end game conditions
+        """
 
         if self.player_turn == "1":
             self.game_map[y_coord][x_coord] = "__X__"
@@ -130,47 +135,31 @@ class TicTacToe:
         self.print_map()
         self.game_continue = self.end_game_check()
 
-    def player_move(self):
-        coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
-        x_coord = int(coord_raw[0]) - 1
-        y_coord = int(coord_raw[1]) - 1
-
-
     def game_core(self):
 
         self.print_map()
         while self.game_continue:
 
+            # prompt player input
             coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
             x_coord = int(coord_raw[0]) - 1
             y_coord = int(coord_raw[1]) - 1
 
-            # check if Player 1's turn
-            if self.player_turn == "1":
+            # check input validity
+            if self.valid_input_check(coord_raw, x_coord, y_coord):
 
-                # check if Player 1 input is valid
-                if self.valid_input_check(coord_raw, x_coord, y_coord):
-
-                    # record player 2's move and check end of game conditions
-                    self.mark_map(x_coord, y_coord)
-
-            # check if Player 2's turn
-            elif self.player_turn == "2":
-
-                # check if Player 2 input is valid
-                if self.valid_input_check(coord_raw, x_coord, y_coord):
-
-                    # record player 2's move and check end of game conditions
-                    self.mark_map(x_coord, y_coord)
+                # record player move and check end of game conditions
+                self.mark_map(x_coord, y_coord)
 
 
-new_game_on = True
+# turn game on
+game_on = True
 
-while new_game_on:
+while game_on:
     new_game = TicTacToe()
     new_game.game_core()
     if input("Would you like to play again? y/n: ") == "y":
-        new_game_on = True
+        game_on = True
     else:
         print("Goodbye")
-        new_game_on = False
+        game_on = False
