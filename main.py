@@ -107,8 +107,8 @@ def game_core():
     turns_taken = 0
     player_turn = "1"
 
-    print(f"Row3{row3}\nRow2{row2}\nRow1{row1}")
-    print("_____Column1_Column2_Column3")
+    print(f"3{row3}\n2{row2}\n1{row1}")
+    print("_____1______2_______3____")
 
     # game loop/core
     while game_continue:
