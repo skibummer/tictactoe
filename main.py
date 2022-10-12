@@ -1,5 +1,6 @@
-class Game:
+class TicTacToe:
     def __init__(self):
+        """Initialize game state"""
         self.row3 = ["____", "____", "____"]
         self.row2 = ["____", "____", "____"]
         self.row1 = ["____", "____", "____"]
@@ -9,12 +10,18 @@ class Game:
         self.player_turn = "1"
 
     def print_map(self):
+        """Print current tic-tac-toe grid"""
+        print("\nTic-tac-toe\n")
         print(f"3{self.row3}\n2{self.row2}\n1{self.row1}")
-        print("_____1______2_______3____")
+        print("_____1______2_______3____\n")
 
-    """TicTacToe"""
     def end_game_check(self):
-        """"Define and check end of game conditions"""
+        """
+        Define and check end of game conditions
+        Print winner or tie then return false if game is over
+        Return true if game is not over
+        """
+        # top row
         if self.row3[0] == self.row3[1] == self.row3[2] and self.row3[0] != "____":
             if self.row3[0] == "_X__":
                 print("Player 1 wins!")
@@ -22,6 +29,7 @@ class Game:
                 print("Player 2 wins!")
             return False
 
+        # middle row
         elif self.row2[0] == self.row2[1] == self.row2[2] and self.row2[0] != "____":
             if self.row2[0] == "_X__":
                 print("Player 1 wins!")
@@ -29,6 +37,7 @@ class Game:
                 print("Player 2 wins!")
             return False
 
+        # bottom row
         elif self.row1[0] == self.row1[1] == self.row1[2] and self.row1[0] != "____":
             if self.row1[0] == "_X__":
                 print("Player 1 wins!")
@@ -36,6 +45,7 @@ class Game:
                 print("Player 2 wins!")
             return False
 
+        # left column
         elif self.row3[0] == self.row2[0] == self.row1[0] and self.row3[0] != "____":
             if self.row3[0] == "_X__":
                 print("Player 1 wins!")
@@ -43,6 +53,7 @@ class Game:
                 print("Player 2 wins!")
             return False
 
+        # middle column
         elif self.row3[1] == self.row2[1] == self.row1[1] and self.row3[1] != "____":
             if self.row3[1] == "_X__":
                 print("Player 1 wins!")
@@ -50,6 +61,7 @@ class Game:
                 print("Player 2 wins!")
             return False
 
+        # right column
         elif self.row3[2] == self.row2[2] == self.row1[2] and self.row3[2] != "____":
             if self.row3[2] == "_X__":
                 print("Player 1 wins!")
@@ -57,6 +69,7 @@ class Game:
                 print("Player 2 wins!")
             return False
 
+        # diagonal bottom right to top left
         elif self.row3[0] == self.row2[1] == self.row1[2] and self.row3[0] != "____":
             if self.row3[0] == "_X__":
                 print("Player 1 wins!")
@@ -64,6 +77,7 @@ class Game:
                 print("Player 2 wins!")
             return False
 
+        # diagonal bottom left to top right
         elif self.row3[2] == self.row2[1] == self.row1[0] and self.row3[2] != "____":
             if self.row3[2] == "_X__":
                 print("Player 1 wins!")
@@ -71,6 +85,7 @@ class Game:
                 print("Player 2 wins!")
             return False
 
+        # tie if board is full and there are no winners
         elif self.turns_taken == 9:
             print("Cats game!")
             return False
@@ -80,11 +95,12 @@ class Game:
 
     def valid_input_check(self, coordinate, x_cord, y_cord):
         """Check if player input is somewhat valid"""
-        # check if coordinate given is within map range
+        # check if coordinate character length is 2
         if len(coordinate) != 2:
             print("Invalid input, will you please try again?")
             return False
 
+        # check if coordinate given is within map range
         elif x_cord < 0 or x_cord > 2 or y_cord < 0 or y_cord > 2:
             print("Coordinate out of range, will you please try again?")
 
@@ -113,12 +129,12 @@ class Game:
     def game_core(self):
         while self.game_continue:
 
-            # check if Player 1 turn
+            # check if Player 1's turn
             if self.player_turn == "1":
 
                 p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
-                p1_x_coord = int(p1_coord_raw[0])-1
-                p1_y_coord = int(p1_coord_raw[1])-1
+                p1_x_coord = int(p1_coord_raw[0]) - 1
+                p1_y_coord = int(p1_coord_raw[1]) - 1
 
                 # test input
                 # print(p1_coord_raw)
@@ -132,35 +148,36 @@ class Game:
                     # print(f"turns_taken:{turns_taken}")
                     self.game_continue = self.end_game_check()
                     self.player_turn = "2"
-                    print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
-                    print("_____Colum1_Column2_Column3")
+                    self.print_map()
+                    # print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
+                    # print("_____Colum1_Column2_Column3")
 
             # check if Player 2's turn
             if self.player_turn == "2" and self.game_continue:
 
                 p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
-                p2_x_coord = int(p2_coord_raw[0])-1
-                p2_y_coord = int(p2_coord_raw[1])-1
+                p2_x_coord = int(p2_coord_raw[0]) - 1
+                p2_y_coord = int(p2_coord_raw[1]) - 1
 
                 # test input
                 # print(p2_coord_raw)
+                # print(f"test p1_x_coord: {p1_x_coord}")
+                # print(f"test p1_y_coord: {p1_y_coord}")
 
                 if self.valid_input_check(p2_coord_raw, p2_x_coord, p2_y_coord):
                     # record player 2's move and check end of game conditions
                     self.mark_map(p2_x_coord, p2_y_coord)
                     self.turns_taken += 1
-                    print(self.turns_taken)
                     self.game_continue = self.end_game_check()
                     self.player_turn = "1"
-                    print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
-                    print("_____Column1_Column2_Column3")
+                    self.print_map()
 
-            # ask for restart after game ends, resets to start conditions if yes
+
 
 new_game_on = True
 
 while new_game_on:
-    new_game = Game()
+    new_game = TicTacToe()
     new_game.print_map()
     new_game.game_core()
     if input("Would you like to play again? y/n: ") == "y":
@@ -168,4 +185,3 @@ while new_game_on:
     else:
         print("Goodbye")
         new_game_on = False
-
