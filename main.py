@@ -130,13 +130,13 @@ class Game:
                     self.mark_map(p1_x_coord, p1_y_coord)
                     self.turns_taken += 1
                     # print(f"turns_taken:{turns_taken}")
-                    self.player_turn = "2"
                     self.game_continue = self.end_game_check()
+                    self.player_turn = "2"
                     print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
                     print("_____Colum1_Column2_Column3")
 
             # check if Player 2's turn
-            if self.player_turn == "2" and self.game_continue == True:
+            if self.player_turn == "2" and self.game_continue:
 
                 p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
                 p2_x_coord = int(p2_coord_raw[0])-1
@@ -150,19 +150,22 @@ class Game:
                     self.mark_map(p2_x_coord, p2_y_coord)
                     self.turns_taken += 1
                     print(self.turns_taken)
-                    self.player_turn = "1"
                     self.game_continue = self.end_game_check()
+                    self.player_turn = "1"
                     print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
                     print("_____Column1_Column2_Column3")
 
             # ask for restart after game ends, resets to start conditions if yes
-            if not self.game_continue:
-                if input("Would you like to play again? y/n: ") == "y":
-                    self.game_core()
-                else:
-                    print("Goodbye")
 
-new_game = Game()
+new_game_on = True
 
-new_game.print_map()
-new_game.game_core()
+while new_game_on:
+    new_game = Game()
+    new_game.print_map()
+    new_game.game_core()
+    if input("Would you like to play again? y/n: ") == "y":
+        new_game_on = True
+    else:
+        print("Goodbye")
+        new_game_on = False
+
