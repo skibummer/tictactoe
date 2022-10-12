@@ -1,17 +1,18 @@
 class Game():
-    def __init__(self, row3, row2, row1, game_map, game_continue, turns_taken, player_turn):
+    def __init__(self):
         self.row3 = ["____", "____", "____"]
         self.row2 = ["____", "____", "____"]
         self.row1 = ["____", "____", "____"]
-        self.game_map = [row1, row2, row3]
+        self.game_map = [self.row1, self.row2, self.row3]
         self.game_continue = True
         self.turns_taken = 0
         self.player_turn = "1"
 
+    def print_map(self):
         print(self.row3)
+        print(self.row2)
+        print(self.row1)
         print("_____1______2_______3____")
-
-
 
     """TicTacToe"""
     def end_game_check(self):
@@ -79,7 +80,7 @@ class Game():
         else:
             return True
 
-    def valid_input_check(coordinate, x_cord, y_cord):
+    def valid_input_check(self, coordinate, x_cord, y_cord):
         """Check if player input is somewhat valid"""
         # check if coordinate given is within map range
         if len(coordinate) != 2:
@@ -90,7 +91,7 @@ class Game():
             print("Coordinate out of range, will you please try again?")
 
         # check if choice is already taken
-        elif game_map[y_cord][x_cord] != "____":
+        elif self.game_map[y_cord][x_cord] != "____":
             print("That box is already chosen, pick an empty coordinate")
             return False
         # continue turn if input is somewhat valid
@@ -103,10 +104,10 @@ class Game():
         # print(f"player_turn {player_turn}")
         # print(f"turns_taken {turns_taken}")
         if self.player_turn == "1":
-            game_map[y_coord][x_coord] = "_X__"
+            self.game_map[y_coord][x_coord] = "_X__"
 
-        elif player_turn == "2":
-            game_map[y_coord][x_coord] = "_0__"
+        elif self.player_turn == "2":
+            self.game_map[y_coord][x_coord] = "_0__"
 
         # print(f"turns_taken: {turns_taken}")
         # update game map with player move
@@ -162,3 +163,7 @@ class Game():
                     game_core()
                 else:
                     print("Goodbye")
+
+new_game = Game()
+
+new_game.print_map()
