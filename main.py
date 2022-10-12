@@ -132,8 +132,8 @@ class TicTacToe:
 
     def player_move(self):
         coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
-        input_x_coord = int(coord_raw[0]) - 1
-        input_y_coord = int(coord_raw[1]) - 1
+        x_coord = int(coord_raw[0]) - 1
+        y_coord = int(coord_raw[1]) - 1
 
 
     def game_core(self):
@@ -148,24 +148,14 @@ class TicTacToe:
             # check if Player 1's turn
             if self.player_turn == "1":
 
-                # prompt Player 1 for input
-                # p1_coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
-                # p1_x_coord = int(coord_raw[0]) - 1
-                # p1_y_coord = int(coord_raw[1]) - 1
-
                 # check if Player 1 input is valid
-                if self.valid_input_check(coord_raw, x_coord,y_coord):
+                if self.valid_input_check(coord_raw, x_coord, y_coord):
 
                     # record player 2's move and check end of game conditions
                     self.mark_map(x_coord, y_coord)
 
             # check if Player 2's turn
             elif self.player_turn == "2":
-
-                # prompt Player 2 for input
-                # p2_coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
-                # p2_x_coord = int(coord_raw[0]) - 1
-                # p2_y_coord = int(coord_raw[1]) - 1
 
                 # check if Player 2 input is valid
                 if self.valid_input_check(coord_raw, x_coord, y_coord):
