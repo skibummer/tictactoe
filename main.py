@@ -1,19 +1,9 @@
 def game_core():
     """TicTacToe"""
-
-
-
     def end_game_check():
         """"Define and check end of game conditions"""
-        if row0[0] == row0[1] == row0[2] and row0[0] != "____":
-            if row0[0] == "_X__":
-                print("Player 1 wins!")
-            else:
-                print("Player 2 wins!")
-            return False
-
-        elif row1[0] == row1[1] == row1[2] and row1[0] != "____":
-            if row1[0] == "_X__":
+        if row3[0] == row3[1] == row3[2] and row3[0] != "____":
+            if row3[0] == "_X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
@@ -26,36 +16,43 @@ def game_core():
                 print("Player 2 wins!")
             return False
 
-        elif row0[0] == row1[0] == row2[0] and row0[0] != "____":
-            if row0[0] == "_X__":
+        elif row1[0] == row1[1] == row1[2] and row1[0] != "____":
+            if row1[0] == "_X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
-        elif row0[1] == row1[1] == row2[1] and row0[1] != "____":
-            if row0[1] == "_X__":
+        elif row3[0] == row2[0] == row1[0] and row3[0] != "____":
+            if row3[0] == "_X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
-        elif row0[2] == row1[2] == row2[2] and row0[2] != "____":
-            if row0[2] == "_X__":
+        elif row3[1] == row2[1] == row1[1] and row3[1] != "____":
+            if row3[1] == "_X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
-        elif row0[0] == row1[1] == row2[2] and row0[0] != "____":
-            if row0[0] == "_X__":
+        elif row3[2] == row2[2] == row1[2] and row3[2] != "____":
+            if row3[2] == "_X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
-        elif row0[2] == row1[1] == row2[0] and row0[2] != "____":
-            if row0[2] == "_X__":
+        elif row3[0] == row2[1] == row1[2] and row3[0] != "____":
+            if row3[0] == "_X__":
+                print("Player 1 wins!")
+            else:
+                print("Player 2 wins!")
+            return False
+
+        elif row3[2] == row2[1] == row1[0] and row3[2] != "____":
+            if row3[2] == "_X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
@@ -68,16 +65,16 @@ def game_core():
         else:
             return True
 
-    def valid_input_check(coordinate, y_cord, x_cord):
+    def valid_input_check(coordinate, x_cord, y_cord):
         """Check if player input is somewhat valid"""
         # check if coordinate given is within map range
         if len(coordinate) != 2:
             print("Invalid input, will you please try again?")
             return False
 
-        elif x_cord < 0 or x_cord > 2 or y_cord < 0 or y_cord > 2:
+        elif x_cord < 1 or x_cord > 3 or y_cord < 1 or y_cord > 3:
             print(y_cord, x_cord)
-            print("Invalid input, will you please? try again")
+            print("Coordinate out of range, will you please? try again")
 
         # check if choice is already taken
         elif game_map[y_cord][x_cord] != "____":
@@ -87,7 +84,7 @@ def game_core():
         else:
             return True
 
-    def mark_map(y_coord, x_coord):
+    def mark_map(x_coord,y_coord):
         """Check which player turn and use appropriate mark"""
         # test
         # print(f"player_turn {player_turn}")
@@ -101,46 +98,51 @@ def game_core():
 
         # print(f"turns_taken: {turns_taken}")
         # update game map with player move
-        print("     Column0  Column1  Column2")
-        print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
+        print("     Column1  Column2  Column3")
+        print(f"Row3{row3}\nRow2{row2}\nRow1{row1}")
 
     # Set start conditions
-    row0 = ["____", "____", "____"]
-    row1 = ["____", "____", "____"]
+    row3 = ["____", "____", "____"]
     row2 = ["____", "____", "____"]
-    game_map = [row0, row1, row2]
+    row1 = ["____", "____", "____"]
+    game_map = [row1, row2, row3]
     game_continue = True
     turns_taken = 0
     player_turn = "1"
-    print("_____Column0_Column1_Column2")
-    print(f"Row0{row0}\nRow1{row1}\nRow2{row2}")
+
+    print(f"Row3{row3}\nRow2{row2}\nRow1{row1}")
+    print("_____Column1_Column2_Column3")
 
     # game loop/core
     while game_continue:
 
         # check if Player 1 turn
-        while player_turn == "1":
+        if player_turn == "1":
 
-            p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<column><row>, for example, 11):  ")
-            p1_y_coord = int(p1_coord_raw[1])
-            p1_x_coord = int(p1_coord_raw[0])
+            p1_coord_raw = input("Player 1: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
+            p1_x_coord = int(p1_coord_raw[0])-1
+            p1_y_coord = int(p1_coord_raw[1])-1
+
             # test input
             print(p1_coord_raw)
+            print(f"test p1_x_coord: {p1_x_coord}")
+            print(f"test p1_y_coord: {p1_y_coord}")
 
-            if valid_input_check(p1_coord_raw, p1_y_coord, p1_x_coord):
+            if valid_input_check(p1_coord_raw, p1_x_coord, p1_y_coord):
                 """If input is somewhat valid, finish player 1 turn"""
-                mark_map(p1_y_coord, p1_x_coord)
+                mark_map(p1_x_coord, p1_y_coord)
                 turns_taken += 1
-                print(turns_taken)
+                print(f"turns_taken:{turns_taken}")
                 player_turn = "2"
                 game_continue = end_game_check()
 
         # check if Player 2's turn
-        while player_turn == "2" and game_continue == True:
+        if player_turn == "2" and game_continue == True:
 
             p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<column><row>, for example, 11):  ")
-            p2_y_coord = int(p2_coord_raw[1])
             p2_x_coord = int(p2_coord_raw[0])
+            p2_y_coord = int(p2_coord_raw[1])
+
             # test input
             print(p2_coord_raw)
 
