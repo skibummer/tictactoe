@@ -94,7 +94,7 @@ class TicTacToe:
         else:
             return True
 
-    def valid_input_check(self, coordinate, x_cord, y_cord):
+    def valid_input_check(self, coordinate, x_coord, y_coord):
         """Check if player input is somewhat valid"""
 
         # check if coordinate character length is 2
@@ -103,11 +103,11 @@ class TicTacToe:
             return False
 
         # check if coordinate given is within map range
-        elif x_cord < 0 or x_cord > 2 or y_cord < 0 or y_cord > 2:
+        elif x_coord < 0 or x_coord > 2 or y_coord < 0 or y_coord > 2:
             print("Coordinate out of range, will you please try again?")
 
         # check if choice is already taken
-        elif self.game_map[y_cord][x_cord] != "_____":
+        elif self.game_map[y_coord][x_coord] != "_____":
             print("That box is already chosen, pick an empty coordinate")
             return False
 
@@ -116,17 +116,19 @@ class TicTacToe:
             return True
 
     def mark_map(self, x_coord, y_coord):
-        """Check which player turn and use appropriate mark
+        """Check which player turn
+            Use appropriate mark
             Switch player turn
             Record turn taken
             Print map
             Check end game conditions
         """
-
+        # Player 1
         if self.player_turn == "1":
             self.game_map[y_coord][x_coord] = "__X__"
             self.player_turn = "2"
 
+        # Player 2
         elif self.player_turn == "2":
             self.game_map[y_coord][x_coord] = "__0__"
             self.player_turn = "1"
