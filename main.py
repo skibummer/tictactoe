@@ -114,17 +114,12 @@ class TicTacToe:
 
     def mark_map(self, x_coord, y_coord):
         """Check which player turn and use appropriate mark"""
-        # test
-        # print(f"player_turn {player_turn}")
-        # print(f"turns_taken {turns_taken}")
+
         if self.player_turn == "1":
             self.game_map[y_coord][x_coord] = "_X__"
 
         elif self.player_turn == "2":
             self.game_map[y_coord][x_coord] = "_0__"
-
-        # print(f"turns_taken: {turns_taken}")
-        # update game map with player move
 
     def game_core(self):
         while self.game_continue:
@@ -136,42 +131,32 @@ class TicTacToe:
                 p1_x_coord = int(p1_coord_raw[0]) - 1
                 p1_y_coord = int(p1_coord_raw[1]) - 1
 
-                # test input
-                # print(p1_coord_raw)
-                # print(f"test p1_x_coord: {p1_x_coord}")
-                # print(f"test p1_y_coord: {p1_y_coord}")
-
+                # check if Player 1 input is valid
                 if self.valid_input_check(p1_coord_raw, p1_x_coord, p1_y_coord):
-                    """If input is somewhat valid, finish player 1 turn"""
+                    # record player 2's move and check end of game conditions
                     self.mark_map(p1_x_coord, p1_y_coord)
                     self.turns_taken += 1
-                    # print(f"turns_taken:{turns_taken}")
                     self.game_continue = self.end_game_check()
                     self.player_turn = "2"
                     self.print_map()
-                    # print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
-                    # print("_____Colum1_Column2_Column3")
 
             # check if Player 2's turn
             if self.player_turn == "2" and self.game_continue:
 
+                # prompt player 2 for input
                 p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
                 p2_x_coord = int(p2_coord_raw[0]) - 1
                 p2_y_coord = int(p2_coord_raw[1]) - 1
 
-                # test input
-                # print(p2_coord_raw)
-                # print(f"test p1_x_coord: {p1_x_coord}")
-                # print(f"test p1_y_coord: {p1_y_coord}")
-
+                # check if Player 2 input is valid
                 if self.valid_input_check(p2_coord_raw, p2_x_coord, p2_y_coord):
+
                     # record player 2's move and check end of game conditions
                     self.mark_map(p2_x_coord, p2_y_coord)
                     self.turns_taken += 1
                     self.game_continue = self.end_game_check()
                     self.player_turn = "1"
                     self.print_map()
-
 
 
 new_game_on = True
