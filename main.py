@@ -72,8 +72,8 @@ def game_core():
             print("Invalid input, will you please try again?")
             return False
 
-        elif x_cord < 1 or x_cord > 3 or y_cord < 1 or y_cord > 3:
-            print(y_cord, x_cord)
+        elif x_cord < 0 or x_cord > 2 or y_cord < 0 or y_cord > 2:
+            print(x_cord, y_cord)
             print("Coordinate out of range, will you please? try again")
 
         # check if choice is already taken
@@ -98,8 +98,9 @@ def game_core():
 
         # print(f"turns_taken: {turns_taken}")
         # update game map with player move
-        print("     Column1  Column2  Column3")
+
         print(f"Row3{row3}\nRow2{row2}\nRow1{row1}")
+        print("_____Column1_Column2_Column3")
 
     # Set start conditions
     row3 = ["____", "____", "____"]
@@ -139,9 +140,9 @@ def game_core():
         # check if Player 2's turn
         if player_turn == "2" and game_continue == True:
 
-            p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<column><row>, for example, 11):  ")
-            p2_x_coord = int(p2_coord_raw[0])
-            p2_y_coord = int(p2_coord_raw[1])
+            p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
+            p2_x_coord = int(p2_coord_raw[0])-1
+            p2_y_coord = int(p2_coord_raw[1])-1
 
             # test input
             print(p2_coord_raw)
