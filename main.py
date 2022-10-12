@@ -73,7 +73,6 @@ def game_core():
             return False
 
         elif x_cord < 0 or x_cord > 2 or y_cord < 0 or y_cord > 2:
-            print(x_cord, y_cord)
             print("Coordinate out of range, will you please? try again")
 
         # check if choice is already taken
@@ -84,7 +83,7 @@ def game_core():
         else:
             return True
 
-    def mark_map(x_coord,y_coord):
+    def mark_map(x_coord, y_coord):
         """Check which player turn and use appropriate mark"""
         # test
         # print(f"player_turn {player_turn}")
@@ -98,9 +97,6 @@ def game_core():
 
         # print(f"turns_taken: {turns_taken}")
         # update game map with player move
-
-        print(f"Row3{row3}\nRow2{row2}\nRow1{row1}")
-        print("_____Column1_Column2_Column3")
 
     # Set start conditions
     row3 = ["____", "____", "____"]
@@ -136,6 +132,8 @@ def game_core():
                 print(f"turns_taken:{turns_taken}")
                 player_turn = "2"
                 game_continue = end_game_check()
+                print(f"Row3{row3}\nRow2{row2}\nRow1{row1}")
+                print("_____Colum1_Column2_Column3")
 
         # check if Player 2's turn
         if player_turn == "2" and game_continue == True:
@@ -147,13 +145,15 @@ def game_core():
             # test input
             print(p2_coord_raw)
 
-            if valid_input_check(p2_coord_raw, p2_y_coord, p2_x_coord):
+            if valid_input_check(p2_coord_raw, p2_x_coord, p2_y_coord):
                 # record player 2's move and check end of game conditions
-                mark_map(p2_y_coord, p2_x_coord)
+                mark_map(p2_x_coord, p2_y_coord)
                 turns_taken += 1
                 print(turns_taken)
                 player_turn = "1"
                 game_continue = end_game_check()
+                print(f"Row3{row3}\nRow2{row2}\nRow1{row1}")
+                print("_____Column1_Column2_Column3")
 
         # ask for restart after game ends, resets to start conditions if yes
         if not game_continue:
