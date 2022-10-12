@@ -123,6 +123,7 @@ class TicTacToe:
 
         self.turns_taken += 1
         print(self.turns_taken)
+        self.print_map()
 
     def game_core(self):
         while self.game_continue:
@@ -140,7 +141,7 @@ class TicTacToe:
                     self.mark_map(p1_x_coord, p1_y_coord)
                     self.game_continue = self.end_game_check()
                     self.player_turn = "2"
-                    self.print_map()
+                    # self.print_map()
 
             # check if Player 2's turn
             if self.player_turn == "2" and self.game_continue:
@@ -157,7 +158,7 @@ class TicTacToe:
                     self.mark_map(p2_x_coord, p2_y_coord)
                     self.game_continue = self.end_game_check()
                     self.player_turn = "1"
-                    self.print_map()
+                    # self.print_map()
 
 
 new_game_on = True
