@@ -1,9 +1,9 @@
 class TicTacToe:
     def __init__(self):
         """Initialize game state"""
-        self.row3 = ["____", "____", "____"]
-        self.row2 = ["____", "____", "____"]
-        self.row1 = ["____", "____", "____"]
+        self.row3 = ["_____", "_____", "_____"]
+        self.row2 = ["_____", "_____", "_____"]
+        self.row1 = ["_____", "_____", "_____"]
         self.game_map = [self.row1, self.row2, self.row3]
         self.game_continue = True
         self.turns_taken = 0
@@ -13,7 +13,7 @@ class TicTacToe:
         """Print current tic-tac-toe grid"""
         print("\nTic-tac-toe\n")
         print(f"3{self.row3}\n2{self.row2}\n1{self.row1}")
-        print("____1_______2_______3____\n")
+        print("_____1________2________3____\n")
 
     def end_game_check(self):
         """
@@ -22,64 +22,64 @@ class TicTacToe:
         Return true if game is not over
         """
         # top row
-        if self.row3[0] == self.row3[1] == self.row3[2] and self.row3[0] != "____":
-            if self.row3[0] == "_X__":
+        if self.row3[0] == self.row3[1] == self.row3[2] and self.row3[0] != "_____":
+            if self.row3[0] == "__X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
         # middle row
-        elif self.row2[0] == self.row2[1] == self.row2[2] and self.row2[0] != "____":
-            if self.row2[0] == "_X__":
+        elif self.row2[0] == self.row2[1] == self.row2[2] and self.row2[0] != "_____":
+            if self.row2[0] == "__X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
         # bottom row
-        elif self.row1[0] == self.row1[1] == self.row1[2] and self.row1[0] != "____":
-            if self.row1[0] == "_X__":
+        elif self.row1[0] == self.row1[1] == self.row1[2] and self.row1[0] != "_____":
+            if self.row1[0] == "__X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
         # left column
-        elif self.row3[0] == self.row2[0] == self.row1[0] and self.row3[0] != "____":
-            if self.row3[0] == "_X__":
+        elif self.row3[0] == self.row2[0] == self.row1[0] and self.row3[0] != "_____":
+            if self.row3[0] == "__X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
         # middle column
-        elif self.row3[1] == self.row2[1] == self.row1[1] and self.row3[1] != "____":
-            if self.row3[1] == "_X__":
+        elif self.row3[1] == self.row2[1] == self.row1[1] and self.row3[1] != "_____":
+            if self.row3[1] == "__X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
         # right column
-        elif self.row3[2] == self.row2[2] == self.row1[2] and self.row3[2] != "____":
-            if self.row3[2] == "_X__":
+        elif self.row3[2] == self.row2[2] == self.row1[2] and self.row3[2] != "_____":
+            if self.row3[2] == "__X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
         # diagonal bottom right to top left
-        elif self.row3[0] == self.row2[1] == self.row1[2] and self.row3[0] != "____":
-            if self.row3[0] == "_X__":
+        elif self.row3[0] == self.row2[1] == self.row1[2] and self.row3[0] != "_____":
+            if self.row3[0] == "__X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
             return False
 
         # diagonal bottom left to top right
-        elif self.row3[2] == self.row2[1] == self.row1[0] and self.row3[2] != "____":
-            if self.row3[2] == "_X__":
+        elif self.row3[2] == self.row2[1] == self.row1[0] and self.row3[2] != "_____":
+            if self.row3[2] == "__X__":
                 print("Player 1 wins!")
             else:
                 print("Player 2 wins!")
@@ -107,7 +107,7 @@ class TicTacToe:
             print("Coordinate out of range, will you please try again?")
 
         # check if choice is already taken
-        elif self.game_map[y_cord][x_cord] != "____":
+        elif self.game_map[y_cord][x_cord] != "_____":
             print("That box is already chosen, pick an empty coordinate")
             return False
 
@@ -119,10 +119,10 @@ class TicTacToe:
         """Check which player turn and use appropriate mark"""
 
         if self.player_turn == "1":
-            self.game_map[y_coord][x_coord] = "_X__"
+            self.game_map[y_coord][x_coord] = "__X__"
 
         elif self.player_turn == "2":
-            self.game_map[y_coord][x_coord] = "_0__"
+            self.game_map[y_coord][x_coord] = "__0__"
 
         self.turns_taken += 1
         self.print_map()
