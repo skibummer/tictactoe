@@ -1,4 +1,4 @@
-class Game():
+class Game:
     def __init__(self):
         self.row3 = ["____", "____", "____"]
         self.row2 = ["____", "____", "____"]
@@ -133,7 +133,7 @@ class Game():
                     self.turns_taken += 1
                     # print(f"turns_taken:{turns_taken}")
                     self.player_turn = "2"
-                    game_continue = self.end_game_check()
+                    self.game_continue = self.end_game_check()
                     print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
                     print("_____Colum1_Column2_Column3")
 
@@ -153,12 +153,12 @@ class Game():
                     self.turns_taken += 1
                     print(self.turns_taken)
                     self.player_turn = "1"
-                    game_continue = self.end_game_check()
+                    self.game_continue = self.end_game_check()
                     print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
                     print("_____Column1_Column2_Column3")
 
             # ask for restart after game ends, resets to start conditions if yes
-            if not game_continue:
+            if not self.game_continue:
                 if input("Would you like to play again? y/n: ") == "y":
                     self.game_core()
                 else:
