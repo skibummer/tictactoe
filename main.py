@@ -156,8 +156,11 @@ class TicTacToe:
 game_on = True
 
 while game_on:
+    # name new instance of TicTacToe
     new_game = TicTacToe()
+    # start new game
     new_game.game_core()
+
     if input("Would you like to play again? y/n: ") == "y":
         game_on = True
     else:
