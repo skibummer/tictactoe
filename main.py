@@ -73,7 +73,7 @@ def game_core():
             return False
 
         elif x_cord < 0 or x_cord > 2 or y_cord < 0 or y_cord > 2:
-            print("Coordinate out of range, will you please? try again")
+            print("Coordinate out of range, will you please try again?")
 
         # check if choice is already taken
         elif game_map[y_cord][x_cord] != "____":
@@ -121,15 +121,15 @@ def game_core():
             p1_y_coord = int(p1_coord_raw[1])-1
 
             # test input
-            print(p1_coord_raw)
-            print(f"test p1_x_coord: {p1_x_coord}")
-            print(f"test p1_y_coord: {p1_y_coord}")
+            # print(p1_coord_raw)
+            # print(f"test p1_x_coord: {p1_x_coord}")
+            # print(f"test p1_y_coord: {p1_y_coord}")
 
             if valid_input_check(p1_coord_raw, p1_x_coord, p1_y_coord):
                 """If input is somewhat valid, finish player 1 turn"""
                 mark_map(p1_x_coord, p1_y_coord)
                 turns_taken += 1
-                print(f"turns_taken:{turns_taken}")
+                # print(f"turns_taken:{turns_taken}")
                 player_turn = "2"
                 game_continue = end_game_check()
                 print(f"Row3{row3}\nRow2{row2}\nRow1{row1}")
@@ -143,7 +143,7 @@ def game_core():
             p2_y_coord = int(p2_coord_raw[1])-1
 
             # test input
-            print(p2_coord_raw)
+            # print(p2_coord_raw)
 
             if valid_input_check(p2_coord_raw, p2_x_coord, p2_y_coord):
                 # record player 2's move and check end of game conditions
