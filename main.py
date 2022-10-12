@@ -132,13 +132,13 @@ class Game():
                     self.mark_map(p1_x_coord, p1_y_coord)
                     self.turns_taken += 1
                     # print(f"turns_taken:{turns_taken}")
-                    player_turn = "2"
+                    self.player_turn = "2"
                     game_continue = self.end_game_check()
                     print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
                     print("_____Colum1_Column2_Column3")
 
             # check if Player 2's turn
-            if player_turn == "2" and game_continue == True:
+            if self.player_turn == "2" and self.game_continue == True:
 
                 p2_coord_raw = input("Player 2: Choose the coordinate of your move. (<X><Y>, for example, 11):  ")
                 p2_x_coord = int(p2_coord_raw[0])-1
@@ -152,7 +152,7 @@ class Game():
                     self.mark_map(p2_x_coord, p2_y_coord)
                     self.turns_taken += 1
                     print(self.turns_taken)
-                    player_turn = "1"
+                    self.player_turn = "1"
                     game_continue = self.end_game_check()
                     print(f"Row3{self.row3}\nRow2{self.row2}\nRow1{self.row1}")
                     print("_____Column1_Column2_Column3")
