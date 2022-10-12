@@ -9,9 +9,7 @@ class Game:
         self.player_turn = "1"
 
     def print_map(self):
-        print(self.row3)
-        print(self.row2)
-        print(self.row1)
+        print(f"3{self.row3}\n2{self.row2}\n1{self.row1}")
         print("_____1______2_______3____")
 
     """TicTacToe"""
