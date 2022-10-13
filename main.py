@@ -95,7 +95,11 @@ class TicTacToe:
             return True
 
     def valid_input_check(self, coordinate, x_coord, y_coord):
-        """Check if player input is somewhat valid"""
+        """
+        Check if player input is somewhat valid
+        Return False if character length is not 2 or out of range
+        Return True if it passes those conditions
+        """
 
         # check if coordinate character length is 2
         if len(coordinate) != 2:
@@ -105,6 +109,7 @@ class TicTacToe:
         # check if coordinate given is within map range
         elif x_coord < 0 or x_coord > 2 or y_coord < 0 or y_coord > 2:
             print("Coordinate out of range, will you please try again?")
+            return False
 
         # check if choice is already taken
         elif self.game_map[y_coord][x_coord] != "_____":
