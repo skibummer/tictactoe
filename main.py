@@ -142,9 +142,13 @@ class TicTacToe:
         self.print_map()
         self.game_continue = self.end_game_check()
 
-
-
     def game_core(self):
+        """
+        Print map
+        Prompt player Input
+        Check input validity
+        Mark map
+        """
 
         self.print_map()
         while self.game_continue:
@@ -156,7 +160,6 @@ class TicTacToe:
 
             # check input validity
             if self.valid_input_check(coord_raw, x_coord, y_coord):
-
                 # record player move and check end of game conditions
                 self.mark_map(x_coord, y_coord)
 
