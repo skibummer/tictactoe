@@ -154,7 +154,8 @@ class TicTacToe:
         while self.game_continue:
 
             # prompt player input
-            coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11):  ")
+            coord_raw = input(f"Player {self.player_turn}: Choose a coordinate. (<X><Y>, for example, 11). Then, "
+                              f"press enter:  ")
             x_coord = int(coord_raw[0]) - 1
             y_coord = int(coord_raw[1]) - 1
 
