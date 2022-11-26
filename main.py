@@ -113,7 +113,7 @@ class TicTacToe:
 
         # check if choice is already taken
         elif self.game_map[y_coord][x_coord] != "_____":
-            print("That box is already chosen, pick an empty coordinate")
+            print("That box is already chosen, will you please pick an empty coordinate")
             return False
 
         # continue if input passes checks
