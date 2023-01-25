@@ -5,7 +5,7 @@ Welcome to my text based version of a tic-tac-toe game coded in python 3 and des
 
 ## Dependencies
 
-Python 3.10
+Python 3.8
 
 ## Description
 
